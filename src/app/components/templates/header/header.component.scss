@@ -1,0 +1,48 @@
+@import '../../../../assets/styles/variables.scss';
+
+.templates-header {
+    margin: 10px;
+    height: 40px;
+    display: grid;
+    grid-template-columns: auto 120px;
+
+    .templates-titles {
+        display: grid;
+        grid-template-columns: 60px 240px 60px auto;
+        grid-gap: 1px;
+        align-items: center;
+
+        svg {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+        }
+
+        .menu-title {
+            opacity: 0.6;
+            font-weight: bold;
+        }
+
+        i {
+            margin-bottom: 7px;
+            opacity: 0.6;
+        }
+    }
+
+    .templates-user {
+        display: grid;
+        grid-template-columns: 40px auto;
+        align-items: center;
+
+        .circle {
+            height: 30px;
+            width: 30px;
+            background-color: $light-green;
+            border-radius: 50%;
+        }
+
+        .menu-title {
+            opacity: 0.6;
+        }
+    }
+}

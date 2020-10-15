@@ -1,0 +1,36 @@
+@import '../../../assets/styles/variables.scss';
+@import '../../../assets/styles/mixins.scss';
+
+.tab-container {
+    @include default-grid;
+    margin-top: 30px;
+
+    .templates {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: 180px 90px 120px 120px;
+        align-items: center;
+
+        .tab-link {
+            cursor: pointer;
+            color: #ffffff;
+            font-weight: bold;
+
+            &.active > span {
+                padding-bottom: 5px;
+                border-bottom: 3px solid $light-purple;
+            }
+        }
+
+        .line {
+            border-bottom: 2px solid #ffffff;
+            margin-right: 50px;
+        }
+    }
+}
+
+.content-container {
+    margin-top: 30px;
+    padding-bottom: 120px;
+    @include default-grid;
+}

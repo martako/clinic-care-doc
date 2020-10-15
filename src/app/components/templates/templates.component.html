@@ -1,0 +1,26 @@
+<app-header></app-header>
+<div class="tab-container">
+    <div></div>
+    <div class="templates">
+        <span>
+            <h1>Templates</h1>
+        </span>
+        <div class="line"></div>
+        <a (click)="onTabChange('create', 0)"
+            class="tab-link {{activeTab === 0 ? 'active' : ''}}"><span>Create</span></a>
+        <a (click)="onTabChange('manage', 1)"
+            class="tab-link {{activeTab === 1  ? 'active' : ''}}"><span>Manage</span></a>
+    </div>
+    <div></div>
+</div>
+<div [ngSwitch]="tabChosen">
+    <div class="content-container" *ngSwitchCase="'create'">
+        <div></div>
+        <div><app-create-template></app-create-template></div>
+        <div></div>
+    </div>
+    <div class="content-container" *ngSwitchCase="'manage'">
+        <div></div>
+        <div><app-manage-template></app-manage-template></div>
+        <div></div>
+</div>

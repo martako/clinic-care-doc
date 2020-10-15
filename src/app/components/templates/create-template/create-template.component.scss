@@ -1,0 +1,126 @@
+@import '../../../../assets/styles/variables.scss';
+@import '../../../../assets/styles/mixins.scss';
+
+.create-container {
+    grid-template-rows: 120px auto auto; 
+
+    .info-section {
+        display: grid;
+        grid-template-columns: auto 90px;
+
+        .info-text {
+            .info-title {
+                font-weight: bold;
+                margin-top: 15px;
+            }
+            .info-subtitle {
+                font-size: 12px;
+                opacity: 0.6;
+                margin-bottom: 15px;
+            }
+        }
+
+        .info-button > button {
+            background-color: $light-green;
+            color: #ffffff;
+            margin-top: 15px;
+        }
+    }
+
+    .template-section {
+        margin-top: 30px;
+
+        svg {
+            height: 30px;
+            width: 30px;
+        }
+
+        .section-title {
+            display: grid;
+            grid-template-columns: 60px auto;
+            align-items: center;
+        }
+
+        .section-circle {
+            @include section-circle;
+
+            & > h3 {
+                margin-top: 9px;
+                text-align: center;
+            }
+        }
+
+        .divider {
+            margin-bottom: 30px;
+        }
+
+        .inputs-row {
+            display: grid;
+            grid-template-columns: 25% 25% 50%;
+            margin-top: 15px;
+            column-gap: 15px;
+
+            .calendar-picker > div {
+                width: 50%;
+            }
+
+            .control {
+                display: grid;
+
+                &>label {
+                    text-transform: uppercase;
+                    color: $light-purple;
+                    font-weight: bold;
+                    font-size: 12px;
+                }
+
+                .date-pickers {
+                    display: grid;
+                    grid-template-columns: auto auto;
+                    column-gap: 15px;
+                }
+
+                input {
+                    @include input;
+                }
+                
+                select {
+                    @include select;
+                }
+            }
+        }
+
+        .configuration-row {
+            display: grid;
+            grid-template-columns: 30% 70%;
+            column-gap: 30px;
+            margin-top: 30px;
+
+            h4 {
+                color: #ffffff;
+            }
+
+            .components-grid {
+                display: grid;
+                grid-template-columns: 33% 33% 33%;
+
+                .components-icon {
+                    color: $light-purple;
+                    font-size: 24px;
+                }
+            }
+
+            .available-component {
+                background-color: $dark-purple;
+                font-weight: bold;
+                padding: 15px;
+                margin: 0px 15px 15px 15px;
+                border-radius: 6px;
+                display: grid;
+                grid-template-columns: auto 30px;
+                align-items: center;
+                cursor: pointer;
+            }
+        }
+    }
+}

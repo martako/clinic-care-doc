@@ -1,0 +1,67 @@
+@import '../../../../../assets/styles/variables.scss';
+
+.field {
+    border: 2px solid $dark-purple;
+    border-radius: 6px;
+    margin-top: 6px;
+    padding: 9px 12px 9px 12px;
+    display: grid;
+    grid-template-columns: auto 70px;
+    align-items: self-start;
+
+    .field-title {
+        font-weight: bold;
+    }
+    .field-type {
+        text-transform: uppercase;
+        color: $light-green;
+        font-weight: bold;
+        font-size: small;
+    }
+    .field-icon {
+        color: $light-green;
+        font-size: 24px;
+        display: grid;
+        grid-template-columns: auto auto;
+        align-items: center;
+        margin-top: 5px;
+
+        .warn-icon {
+            margin-right: 12px;
+        }
+    }
+
+    &:hover {
+        background-color: $light-green;
+        cursor: pointer; 
+    }
+
+    &.no-data-warn {
+        border: 2px solid $light-orange;
+    }
+    &.no-data-warn .field-title,
+    &.no-data-warn .field-type,
+    &.no-data-warn .field-icon {
+        color: $light-orange;
+    }
+}
+.on-hover-field {
+    grid-template-columns: 45px auto 45px; 
+    text-align: center;
+    height: 60px;
+    padding: 15px 0px 15px 0px;
+
+    svg {
+        height: 25px;
+        width: 25px;
+    }
+
+    .pointers svg {
+        margin-right: 6px;
+        color: $dark-grey;
+    }
+}
+svg {
+    height: 30px;
+    width: 30px;
+}

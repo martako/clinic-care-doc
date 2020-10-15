@@ -1,0 +1,43 @@
+<div *ngIf="!showFieldOptions" class="field {{currentFieldInEdit ? 'no-data-warn': ''}}" (mouseenter)="showFieldOptionButtons()">
+    <div>
+        <div class="field-title">{{field.label}}</div>
+        <div class="field-type">{{field.type}}</div>
+    </div>
+    <div class="field-icon">
+        <span *ngIf="!currentFieldInEdit">{{index + 1}}.</span>
+        <span *ngIf="currentFieldInEdit">
+            <svg class="warn-icon">
+                <use xlink:href="../../../../../assets/icons/icons.svg#general-t-warning"></use>
+            </svg>
+        </span>
+        <svg>
+            <use attr.xlink:href="../../../../../assets/icons/icons.svg#{{field.icon}}"></use>
+        </svg>
+    </div>
+</div>
+<div *ngIf="showFieldOptions" class="field on-hover-field" (mouseleave)="hideFieldOptionButtons()">
+    <div>
+        <svg (click)="goToSettings()">
+            <use xlink:href="../../../../../assets/icons/icons.svg#general-settings"></use>
+        </svg>
+    </div>
+    <div class="pointers">
+        <svg (click)="changeFieldPosition(2, index)">
+            <use xlink:href="../../../../../assets/icons/icons.svg#general-pointing-up"></use>
+        </svg>
+        <svg (click)="changeFieldPosition(1, index)">
+            <use xlink:href="../../../../../assets/icons/icons.svg#general-triangle-up"></use>
+        </svg>
+        <svg (click)="changeFieldPosition(-1, index)">
+            <use xlink:href="../../../../../assets/icons/icons.svg#general-triangle-down"></use>
+        </svg>
+        <svg (click)="changeFieldPosition(-2, index)">
+            <use xlink:href="../../../../../assets/icons/icons.svg#general-pointing-down"></use>
+        </svg>
+    </div>
+    <div>
+        <svg (click)="deleteField(index)">
+            <use xlink:href="../../../../../assets/icons/icons.svg#general-delete-forever"></use>
+        </svg>
+    </div>
+</div>

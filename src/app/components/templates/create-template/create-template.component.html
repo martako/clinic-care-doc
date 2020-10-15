@@ -1,0 +1,88 @@
+<div class="create-container">
+    <div class="ui divider"></div>
+    <div class="info-section">
+        <div class="info-text">
+            <div class="info-title">Fill all informations in two sections</div>
+            <div class="info-subtitle">Creating new templates is divided in two parts</div>
+        </div>
+        <div class="info-button">
+            <button (click)="createTemplate()" class="ui button">Create</button>
+        </div>
+    </div>
+    <div class="ui divider"></div>
+    <div class="template-section">
+        <div class="section-title">
+            <div class="section-circle">
+                <h3>B</h3>
+            </div>
+            <div>
+                <h3>Basic Informations</h3>
+            </div>
+        </div>
+        <div class="inputs-row">
+            <div class="control">
+                <label for="name">Name</label>
+                <input [(ngModel)]="model.name" type="text" name="name" placeholder="&mdash; Template name">
+            </div>
+            <div class="control">
+                <label for="type">Type</label>
+                <select [(ngModel)]="model.type" type="text" name="type">
+                    <option *ngFor="let type of entryTypes">{{type.option}}</option>
+                </select>
+            </div>
+            <div class="control">
+                <label for="calendar">Available</label>
+                <div class="date-pickers">
+                    <input [ngModel]="model.availableFrom | date:'yyyy-MM-dd'" (ngModelChange)="model.availableFrom = $event" type="date" name="fromDate" placeholder="&mdash; from date">
+                    <input [ngModel]="model.availableTo | date:'yyyy-MM-dd'" (ngModelChange)="model.availableTo = $event" type="date" name="toDate" placeholder="&mdash; to date">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="template-section">
+        <div class="section-title">
+            <div class="section-circle">
+                <h3>F</h3>
+            </div>
+            <div>
+                <h3>Fields Configuration</h3>
+            </div>
+        </div>
+        <div class="configuration-row">
+            <div class="current-fields-section">
+                <h4 class="ui horizontal divider header">
+                    Current fields
+                </h4>
+                <div *ngFor="let field of fields, let i = index">
+                    <app-field [field]="field" [currentField]="currentField" [index]="i"
+                    (showFieldConfiguration)="showFieldConfiguration($event, field)" (deleteFieldFromList)="deleteFieldFromList($event)"
+                    (changeFieldPositionNumber)="changeFieldPosition($event)"></app-field>
+                </div>
+            </div>
+            <div *ngIf="!showFieldConf" class="available-components-section">
+                <h4 class="ui horizontal divider header">
+                    Available components
+                </h4>
+                <div class="components-grid">
+                    <div *ngFor="let component of availableComponents" class="available-component"
+                        (click)="addNewField(component)">
+                        <div>{{component.type}}</div>
+                        <div class="components-icon">
+                            <svg>
+                                <use attr.xlink:href="../../../../assets/icons/icons.svg#{{component.icon}}"></use>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="showFieldConf" class="field-configuration-section">
+                <h4 class="ui horizontal divider header">
+                    Field configuration
+                </h4>
+                <div>
+                    <app-field-configuration [field]="currentField" (goBackToComponents)="showFieldConfiguration($event)"></app-field-configuration>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

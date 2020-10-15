@@ -1,0 +1,43 @@
+<div class="field-configuration-container">
+    <div class="field">
+        <div>
+            <div class="field-title">{{field.label}}</div>
+            <div class="field-type">{{field.type}}</div>
+        </div>
+        <div class="field-icon">
+            <svg class="warn-icon">
+                <use xlink:href="../../../../../assets/icons/icons.svg#general-t-warning"></use>
+            </svg>
+            <svg>
+                <use attr.xlink:href="../../../../../assets/icons/icons.svg#{{field.icon}}"></use>
+            </svg>
+        </div>
+    </div>
+    <div class="inputs-row">
+        <div class="control">
+            <label for="name">Name</label>
+            <input [(ngModel)]="field.name" type="text" name="name" placeholder="&mdash; Field name">
+        </div>
+        <div class="control">
+            <label for="label">Label</label>
+            <input [(ngModel)]="field.label" type="text" name="label" placeholder="&mdash; Field label">
+        </div>
+    </div>
+    <div *ngIf="field.options" class="options-row">
+        <label for="name">Options</label>
+        <div (click)="addNewOption()" class="add-new-option">
+            <svg>
+                <use xlink:href="../../../../../assets/icons/icons.svg#general-i-add"></use>
+            </svg>
+            <span>Add new option</span>
+        </div>
+        <div class="opt-input" *ngFor="let option of field.options, let i = index; trackBy:trackByFn">
+            <input [(ngModel)]="field.options[i]" type="text" name="name" placeholder="&mdash; Option {{i + 1}}">
+        </div>
+    </div>
+</div>
+<div class="field-buttons">
+    <button (click)="goBackToAvailableComponents()" class="ui button">Cancel</button>
+    <div></div>
+    <button (click)="goBackToAvailableComponents()" class="ui button">Update</button>
+</div>
